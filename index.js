@@ -41,5 +41,4 @@ $("#btn").on("click", function () {
     $("#kateWon").text(((((count(results,1))/results.length)*100).toFixed(1))+"%");
     $("#vladimirWon").text(((((count(results,2))/results.length)*100).toFixed(1))+"%");
     $("#draws").text(((((count(results,0))/results.length)*100).toFixed(1))+"%");
-    })
-
+})
