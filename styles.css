@@ -8,16 +8,17 @@
 .dice {
   text-align: center;
   display: inline-block;
-
 }
+
 
 body {
   background-color: #393E46;
+  min-height: 100%;
 }
 
 h1 {
-  height: 230px;
-  margin: 20px;
+  height: 220px;
+  margin: 10px;
   font-family: 'Lobster', cursive;
   text-shadow: 5px 0 #232931;
   font-size: 7rem;
@@ -31,11 +32,11 @@ p {
 }
 
 img {
-  width: 70%;
+  width: 80%;
 }
 
 .btn{
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,11 +93,20 @@ img {
   opacity: 0.5;
 }
 
+
 footer {
-  margin-top: 5%;
+  clear: both;
+  position: relative;
+  margin-top: 5vh;
   color: #EEEEEE;
   text-align: center;
   font-size: 2rem;
   font-family: 'Indie Flower', cursive;
+}
 
+.stats{
+font-size: 2rem;
+margin: 0;
+padding: 0;
+opacity: 0.8;
 }

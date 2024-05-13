@@ -1,36 +1,45 @@
-//all 6 states of a dice
-var diceStates = ["./images/dice1.png","./images/dice2.png","./images/dice3.png","./images/dice4.png","./images/dice5.png","./images/dice6.png"];
+var results = [];
+
+function count (results, element) {
+    return results.filter(
+        (ele) => ele == element).length;
+}
 
 
+$("#btn").on("click", function () {
+    //all 6 states of a dice
+    var diceStates = ["./images/dice1.png","./images/dice2.png","./images/dice3.png","./images/dice4.png","./images/dice5.png","./images/dice6.png"];
+    //changes scr to rnd value of diceStates
+    $("#hidden1, #hidden2").addClass("hidden");   
+    $("#1").attr("src", dice1 = diceStates[Math.floor(Math.random()*6)]);
+    console.log(diceStates.indexOf(dice1));
+    $("#2").attr("src", dice2 = diceStates[Math.floor(Math.random()*6)]);
+    console.log(diceStates.indexOf(dice2));
 
-//changes scr to rnd value of diceStates
-var buttonClick = document.getElementById("btn");
-buttonClick.addEventListener("click", function diceRoll () {
-    var winner1 = document.getElementById("hidden1");
-    var winner2 = document.getElementById("hidden2");
-    winner1.classList.add("hidden");
-    winner2.classList.add("hidden");
-    var dice1StatePosition = Math.floor(Math.random()*6);
-    var dice2StatePosition = Math.floor(Math.random()*6);
-    document.getElementById("1").setAttribute('src', diceStates[dice1StatePosition]);
-    document.getElementById("2").setAttribute('src', diceStates[dice2StatePosition]);
-    
-   if (dice1StatePosition>dice2StatePosition) {
-    document.querySelector("h1").innerText = "Kate wins!";
-    var winner1 = document.getElementById("hidden1");
-        winner1.classList.toggle("hidden");
-   } else if (dice1StatePosition<dice2StatePosition){
-    document.querySelector("h1").innerText = "Vladimir wins!";
-    var winner2 = document.getElementById("hidden2");
-        winner2.classList.toggle("hidden");
-   } else{document.querySelector("h1").innerText = "Draw!"}
+    if (diceStates.indexOf(dice1)>diceStates.indexOf(dice2)) {
+        $("h1").text("Kate wins!");
+        $("#hidden1").removeClass("hidden");
+        results.push(1);
+    } else if (diceStates.indexOf(dice1)<diceStates.indexOf(dice2)){
+        $("h1").text ("Vladimir wins!");
+        $("#hidden2").removeClass("hidden");
+        results.push(2);
+    } else {$("h1").text("Draw!");
+        results.push(0);
+    }
 
     function buttonAnimation () {
-        buttonClick.classList.add ("pressed");
+        $("#btn").addClass("pressed");
         setTimeout(function() {
-            buttonClick.classList.remove ("pressed");
+            $("#btn").removeClass("pressed");
         }, 100)
     }
     buttonAnimation ();
-})
+
+
+    $("#gamesPlayed").text(results.length);
+    $("#kateWon").text(((((count(results,1))/results.length)*100).toFixed(1))+"%");
+    $("#vladimirWon").text(((((count(results,2))/results.length)*100).toFixed(1))+"%");
+    $("#draws").text(((((count(results,0))/results.length)*100).toFixed(1))+"%");
+    })
 
